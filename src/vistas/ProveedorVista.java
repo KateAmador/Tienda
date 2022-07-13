@@ -21,12 +21,17 @@ import java.awt.event.FocusEvent;
 
 public class ProveedorVista extends JFrame {
 
-	private JPanel contentPane;
-	private JTextField txtProveedorID;
-	private JTextField txtEmpresa;
-	private JTextField txtNombre;
-	private JTextField txtApellido;
-	private JTextField txtTelefono;
+	public JPanel contentPane;
+	public JTextField txtProveedorId;
+	public JTextField txtEmpresa;
+	public JTextField txtNombre;
+	public JTextField txtApellido;
+	public JTextField txtTelefono;
+	public JButton btnAgregar;
+	public JButton btnBuscar;
+	public JButton btnModificar;
+	public JButton btnEliminar;
+	public JButton btnLimpiar;
 
 	/**
 	 * Launch the application.
@@ -71,20 +76,20 @@ public class ProveedorVista extends JFrame {
 		lblProveedorID.setBounds(20, 71, 86, 13);
 		contentPane.add(lblProveedorID);
 
-		txtProveedorID = new JTextField();
-		txtProveedorID.addFocusListener(new FocusAdapter() {
+		txtProveedorId = new JTextField();
+		txtProveedorId.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
-				if (txtProveedorID.getText().trim().isEmpty()) {
+				if (txtProveedorId.getText().trim().isEmpty()) {
 					lblAviso.setVisible(true);
 				} else {
 					lblAviso.setVisible(false);
 				}
 			}
 		});
-		txtProveedorID.setBounds(20, 84, 86, 19);
-		contentPane.add(txtProveedorID);
-		txtProveedorID.setColumns(10);
+		txtProveedorId.setBounds(20, 84, 86, 19);
+		contentPane.add(txtProveedorId);
+		txtProveedorId.setColumns(10);
 
 		JLabel lblEmpresa = new JLabel("Empresa (*)");
 		lblEmpresa.setBounds(20, 122, 86, 13);
@@ -106,7 +111,7 @@ public class ProveedorVista extends JFrame {
 		contentPane.add(txtEmpresa);
 
 		JLabel lblNombre = new JLabel("Nombre (*)");
-		lblNombre.setBounds(20, 170, 86, 13);
+		lblNombre.setBounds(275, 122, 86, 13);
 		contentPane.add(lblNombre);
 
 		txtNombre = new JTextField();
@@ -121,11 +126,11 @@ public class ProveedorVista extends JFrame {
 			}
 		});
 		txtNombre.setColumns(10);
-		txtNombre.setBounds(20, 183, 177, 19);
+		txtNombre.setBounds(275, 135, 177, 19);
 		contentPane.add(txtNombre);
 
 		JLabel lblApellido = new JLabel("Apellido (*)");
-		lblApellido.setBounds(275, 122, 86, 13);
+		lblApellido.setBounds(20, 170, 86, 13);
 		contentPane.add(lblApellido);
 
 		txtApellido = new JTextField();
@@ -140,7 +145,7 @@ public class ProveedorVista extends JFrame {
 			}
 		});
 		txtApellido.setColumns(10);
-		txtApellido.setBounds(275, 135, 177, 19);
+		txtApellido.setBounds(20, 183, 177, 19);
 		contentPane.add(txtApellido);
 
 		JLabel lblTelefono = new JLabel("Telefono (*)");
@@ -166,37 +171,39 @@ public class ProveedorVista extends JFrame {
 		separator.setBounds(20, 222, 428, 2);
 		contentPane.add(separator);
 
-		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				validarCamposVacios();
 
-				if (txtProveedorID.getText().trim().isEmpty() || txtEmpresa.getText().trim().isEmpty()
-						|| txtNombre.getText().trim().isEmpty() || txtApellido.getText().trim().isEmpty()
-						|| txtTelefono.getText().trim().isEmpty()) {
-
-					JOptionPane.showMessageDialog(null, "Llenar todos los campos", "Error",
-							JOptionPane.WARNING_MESSAGE);
-				}
 			}
 		});
 		btnAgregar.setBounds(20, 236, 85, 21);
 		contentPane.add(btnAgregar);
 
-		JButton btnModificar = new JButton("Modificar");
+		btnModificar = new JButton("Modificar");
 		btnModificar.setBounds(133, 236, 85, 21);
 		contentPane.add(btnModificar);
 
-		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar = new JButton("Limpiar");
 		btnLimpiar.setBounds(367, 236, 85, 21);
 		contentPane.add(btnLimpiar);
 
-		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setBounds(252, 236, 85, 21);
 		contentPane.add(btnEliminar);
 
-		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(112, 83, 85, 21);
 		contentPane.add(btnBuscar);
 	}
 
+	public void validarCamposVacios() {
+		if (txtProveedorId.getText().trim().isEmpty() || txtEmpresa.getText().trim().isEmpty()
+				|| txtNombre.getText().trim().isEmpty() || txtApellido.getText().trim().isEmpty()
+				|| txtTelefono.getText().trim().isEmpty()) {
+
+			JOptionPane.showMessageDialog(null, "Llenar todos los campos", "Error", JOptionPane.WARNING_MESSAGE);
+		}
+	}
 }
