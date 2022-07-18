@@ -17,11 +17,11 @@ public class ControladorProveedor implements ActionListener {
 
 	public ControladorProveedor(Proveedor modelo, ConsultasProveedor modeloP, ProveedorVista vista) {
 
-		// Igualar las variables con los parametros
+
 		this.modelo = modelo;
 		this.modeloP = modeloP;
 		this.frm = vista;
-		// declarar actions de cada boton
+
 		this.frm.btnAgregar.addActionListener(this);
 		this.frm.btnModificar.addActionListener(this);
 		this.frm.btnEliminar.addActionListener(this);
@@ -32,7 +32,7 @@ public class ControladorProveedor implements ActionListener {
 
 	public void iniciar() {
 
-		frm.setTitle("Customers");
+		frm.setTitle("Proveedor");
 		frm.setLocationRelativeTo(null);
 		frm.txtProveedorId.setVisible(true);
 	}
