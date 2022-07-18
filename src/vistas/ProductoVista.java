@@ -21,17 +21,22 @@ import java.awt.event.FocusEvent;
 
 public class ProductoVista extends JFrame {
 
-	private JPanel contentPane;
-	private JTextField txtProductoID;
-	private JTextField txtCantidad;
-	private JTextField txtMarca;
-	private JTextField txtValorVenta;
-	private JTextField txtValorCompra;
-	private JComboBox comboCategoria;
-	private JComboBox comboProveedor;
-	private JLabel lblAvisoNumeros;
-	private JLabel lblAvisoNumeros2;
-	private JLabel lblAvisoNumeros3;
+	public JPanel contentPane;
+	public JTextField txtProductoID;
+	public JTextField txtCantidad;
+	public JTextField txtMarca;
+	public JTextField txtValorVenta;
+	public JTextField txtValorCompra;
+	public JComboBox comboCategoria;
+	public JComboBox comboProveedor;
+	public JLabel lblAvisoNumeros;
+	public JLabel lblAvisoNumeros2;
+	public JLabel lblAvisoNumeros3;
+	public JButton btnAgregar;
+	public JButton btnBuscar;
+	public JButton btnModificar;
+	public JButton btnEliminar;
+	public JButton btnLimpiar;
 
 	/**
 	 * Launch the application.
@@ -228,7 +233,7 @@ public class ProductoVista extends JFrame {
 		lblNewLabel.setBounds(184, 10, 123, 38);
 		contentPane.add(lblNewLabel);
 
-		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -251,21 +256,21 @@ public class ProductoVista extends JFrame {
 		btnAgregar.setBounds(28, 341, 85, 21);
 		contentPane.add(btnAgregar);
 
-		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(122, 92, 85, 21);
 		contentPane.add(btnBuscar);
 
-		JButton btnModificar = new JButton("Modificar");
+		btnModificar = new JButton("Modificar");
 		btnModificar.setBounds(140, 341, 85, 21);
 		contentPane.add(btnModificar);
 
-		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setBounds(251, 341, 85, 21);
 		contentPane.add(btnEliminar);
 
-		JButton btnNewButton_3_1 = new JButton("Limpiar");
-		btnNewButton_3_1.setBounds(361, 341, 85, 21);
-		contentPane.add(btnNewButton_3_1);
+		btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.setBounds(361, 341, 85, 21);
+		contentPane.add(btnLimpiar);
 
 		JSeparator separator = new JSeparator();
 		separator.setBounds(28, 322, 415, 2);
