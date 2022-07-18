@@ -9,7 +9,7 @@ public class Conexion {
 		private static final String CONTROLADOR = "org.postgresql.Driver";
 		private static final String URL = "jdbc:postgresql://localhost:5432/Tienda";
 		private static final String USUARIO = "postgres";
-		private static final String CLAVE = "1234";
+		private static final String CLAVE = "123456";
 		Connection conexion = null;
 
 		static {
