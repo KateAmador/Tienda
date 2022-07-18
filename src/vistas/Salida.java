@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class Salida extends JFrame {
 
@@ -100,6 +101,18 @@ public class Salida extends JFrame {
 		txtValorVenta.setColumns(10);
 		txtValorVenta.setBounds(177, 266, 161, 24);
 		contentPane.add(txtValorVenta);
+		
+		JButton btnGuardarS = new JButton("Guardar");
+		btnGuardarS.setBounds(75, 312, 117, 43);
+		contentPane.add(btnGuardarS);
+		
+		JButton btnModificarS = new JButton("Modificar");
+		btnModificarS.setBounds(217, 312, 117, 43);
+		contentPane.add(btnModificarS);
+		
+		JButton btnBuscarS = new JButton("Buscar");
+		btnBuscarS.setBounds(366, 312, 117, 43);
+		contentPane.add(btnBuscarS);
 	}
 
 }

@@ -9,6 +9,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Clientes extends JFrame {
 
@@ -100,5 +103,21 @@ public class Clientes extends JFrame {
 		txtTelefono.setColumns(10);
 		txtTelefono.setBounds(156, 246, 143, 20);
 		contentPane.add(txtTelefono);
+		
+		JButton btnGuardarC = new JButton("Guardar");
+		btnGuardarC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnGuardarC.setBounds(60, 310, 117, 43);
+		contentPane.add(btnGuardarC);
+		
+		JButton btnModificarC = new JButton("Modificar");
+		btnModificarC.setBounds(203, 310, 117, 43);
+		contentPane.add(btnModificarC);
+		
+		JButton btnBuscarC = new JButton("Buscar");
+		btnBuscarC.setBounds(372, 310, 117, 43);
+		contentPane.add(btnBuscarC);
 	}
 }
