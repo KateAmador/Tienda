@@ -16,7 +16,6 @@ public class ControladorProveedor implements ActionListener {
 	private ProveedorVista frm;
 
 	public ControladorProveedor(Proveedor modelo, ConsultasProveedor modeloP, ProveedorVista vista) {
-
 		
 		this.modelo = modelo;
 		this.modeloP = modeloP;

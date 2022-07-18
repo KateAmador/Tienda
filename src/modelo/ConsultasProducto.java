@@ -19,7 +19,7 @@ public class ConsultasProducto extends Conexion {
 
 		try {
 			PreparedStatement stm = cn.prepareStatement(
-					"INSERT INTO productos(id, Company_Name, Contact_Name, Contact_Title, Address, City, Region, Postal_Code, Country, Phone, Fax) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+					"INSERT INTO productos(id_producto, cantidad_producto, marca_producto, valorventa_producto, valorcompra_producto) VALUES (?, ?, ?, ?, ?)");
 
 			stm.setInt(1, producto.getProductoId());
 			stm.setInt(4, producto.getCantidad());
@@ -45,50 +45,18 @@ public class ConsultasProducto extends Conexion {
 
 	}
 
-	public boolean modificar(Producto cus) {
+	public boolean modificar(Producto producto) {
 		Connection cn = conectar();
 
 		try {
 			PreparedStatement stm = cn.prepareStatement(
-					"UPDATE customers SET Customer_ID=?, Company_Name=?, Contact_Name=?, Contact_Title=?, Address=?, City=?, Region=?, Postal_Code=?, Country=?, Phone=?, Fax=? WHERE Customer_ID=?");
+					"UPDATE productos SET id_producto=?, cantidad_producto=?, marca_producto=?, valorventa_producto=?, valorcompra_producto=?");
 
-			/*stm.setString(1, cus.getCustomerID());
-			stm.setString(2, cus.getCompanyName());
-			stm.setString(3, cus.getContactName());
-			stm.setString(4, cus.getContactTitle());
-			stm.setString(5, cus.getAddress());
-			stm.setString(6, cus.getCity());
-			stm.setString(7, cus.getRegion());
-			stm.setString(8, cus.getPostalCode());
-			stm.setString(9, cus.getCountry());
-			stm.setString(10, cus.getPhone());
-			stm.setString(11, cus.getFax());
-			// stm.setString(12, cus.getId());
-			stm.executeUpdate();*/
-
-			return true;
-
-		} catch (Exception e) {
-			System.err.println(e);
-			return false;
-		} finally {
-			try {
-				cn.close();
-				// stm.close();
-				// rs.close();
-			} catch (Exception e) {
-				System.err.println(e);
-			}
-		}
-	}
-
-	public boolean eliminar(Producto cus) {
-		Connection cn = conectar();
-
-		try {
-			PreparedStatement stm = cn.prepareStatement("DELETE FROM customers WHERE Customer_ID = ?");
-
-			stm.setInt(1, cus.getProductoId());
+			stm.setInt(1, producto.getProductoId());
+			stm.setInt(4, producto.getCantidad());
+			stm.setString(5, producto.getMarca());
+			stm.setInt(6, producto.getValorVenta());
+			stm.setInt(7, producto.getValorCompra());
 			stm.executeUpdate();
 
 			return true;
@@ -107,30 +75,51 @@ public class ConsultasProducto extends Conexion {
 		}
 	}
 
-	public boolean buscar(Producto cus) {
+	public boolean eliminar(Producto producto) {
+		Connection cn = conectar();
+
+		try {
+			PreparedStatement stm = cn.prepareStatement("DELETE FROM productos WHERE id_producto = ?");
+
+			stm.setInt(1, producto.getProductoId());
+			stm.executeUpdate();
+
+			return true;
+
+		} catch (Exception e) {
+			System.err.println(e);
+			return false;
+		} finally {
+			try {
+				cn.close();
+				// stm.close();
+				// rs.close();
+			} catch (Exception e) {
+				System.err.println(e);
+			}
+		}
+	}
+
+	public boolean buscar(Producto producto) {
 		PreparedStatement stm = null;
 		ResultSet rs = null;
 		Connection cn = conectar();
 
-		String sql = "SELECT * FROM customers WHERE customer_id = ?";
+		String sql = "SELECT * FROM productos WHERE id_producto = ?";
 
 		try {
 			stm = cn.prepareStatement(sql);
-			stm.setInt(1, cus.getProductoId());
+			stm.setInt(1, producto.getProductoId());
 			rs = stm.executeQuery();
 
 			if (rs.next()) {
-				/*cus.setCustomerID(rs.getString("customerID"));
-				cus.setCompanyName(rs.getString("companyName"));
-				cus.setContactName(rs.getString("contactName"));
-				cus.setContactTitle(rs.getString("contactTitle"));
-				cus.setAddress(rs.getString("address"));
-				cus.setCity(rs.getString("city"));
-				cus.setRegion(rs.getString("region"));
-				cus.setPostalCode(rs.getString("postalCode"));
-				cus.setCountry(rs.getString("country"));
-				cus.setPhone(rs.getString("phone"));
-				cus.setFax(rs.getString("fax"));*/
+
+				producto.setProductoId(rs.getInt("id_producto"));
+				producto.setCantidad(rs.getInt("cantidad_producto"));
+				producto.setMarca(rs.getString("marca_producto"));
+				producto.setValorVenta(rs.getInt("valorventa_producto"));
+				producto.setValorCompra(rs.getInt("valorcompra_producto"));
+
 				return true;
 			}
 
