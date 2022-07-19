@@ -17,7 +17,6 @@ public class ControladorProducto implements ActionListener {
 
 	public ControladorProducto(Producto modelo, ConsultasProducto modeloP, ProductoVista vista) {
 
-
 		this.modelo = modelo;
 		this.modeloP = modeloP;
 		this.frm = vista;
@@ -99,10 +98,6 @@ public class ControladorProducto implements ActionListener {
 				JOptionPane.showMessageDialog(null, "No se encontro el registro");
 				limpiar();
 			}
-		}
-
-		if (e.getSource() == frm.btnLimpiar) {
-			limpiar();
 		}
 	}
 

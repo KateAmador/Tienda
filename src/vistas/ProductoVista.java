@@ -27,8 +27,6 @@ public class ProductoVista extends JFrame {
 	public JTextField txtMarca;
 	public JTextField txtValorVenta;
 	public JTextField txtValorCompra;
-	public JComboBox comboCategoria;
-	public JComboBox comboProveedor;
 	public JLabel lblAvisoNumeros;
 	public JLabel lblAvisoNumeros2;
 	public JLabel lblAvisoNumeros3;
@@ -37,6 +35,10 @@ public class ProductoVista extends JFrame {
 	public JButton btnModificar;
 	public JButton btnEliminar;
 	public JButton btnLimpiar;
+	public JButton btnBuscarCategoria;
+	public JButton btnBuscarProveedor;
+	public JTextField txtCategoria;
+	public JTextField txtProveedor;
 
 	/**
 	 * Launch the application.
@@ -58,7 +60,7 @@ public class ProductoVista extends JFrame {
 	 * Create the frame.
 	 */
 	public ProductoVista() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 491, 410);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -173,20 +175,6 @@ public class ProductoVista extends JFrame {
 		txtValorVenta.setBounds(28, 282, 179, 19);
 		contentPane.add(txtValorVenta);
 
-		comboCategoria = new JComboBox();
-		comboCategoria.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusLost(FocusEvent e) {
-				if (comboCategoria.equals("")) {
-					lblAviso.setVisible(true);
-				} else {
-					lblAviso.setVisible(false);
-				}
-			}
-		});
-		comboCategoria.setBounds(28, 149, 179, 21);
-		contentPane.add(comboCategoria);
-
 		JLabel lblProductoCate = new JLabel("Categoria (*)");
 		lblProductoCate.setBounds(28, 130, 110, 19);
 		contentPane.add(lblProductoCate);
@@ -194,20 +182,6 @@ public class ProductoVista extends JFrame {
 		JLabel lblProductoPro = new JLabel("Proveedor (*)");
 		lblProductoPro.setBounds(28, 197, 110, 19);
 		contentPane.add(lblProductoPro);
-
-		comboProveedor = new JComboBox();
-		comboProveedor.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusLost(FocusEvent e) {
-				if (comboProveedor.equals("")) {
-					lblAviso.setVisible(true);
-				} else {
-					lblAviso.setVisible(false);
-				}
-			}
-		});
-		comboProveedor.setBounds(28, 216, 179, 21);
-		contentPane.add(comboProveedor);
 
 		txtValorCompra = new JTextField();
 		txtValorCompra.addFocusListener(new FocusAdapter() {
@@ -239,9 +213,10 @@ public class ProductoVista extends JFrame {
 
 				validarCampoNumerico();
 
-				if (txtProductoID.getText().trim().isEmpty() || comboCategoria.equals("") || comboProveedor.equals("")
-						|| txtCantidad.getText().trim().isEmpty() || txtMarca.getText().trim().isEmpty()
-						|| txtValorVenta.getText().trim().isEmpty() || txtValorCompra.getText().trim().isEmpty()) {
+				if (txtProductoID.getText().trim().isEmpty() || txtCategoria.getText().trim().isEmpty()
+						|| txtProveedor.getText().trim().isEmpty() || txtCantidad.getText().trim().isEmpty()
+						|| txtMarca.getText().trim().isEmpty() || txtValorVenta.getText().trim().isEmpty()
+						|| txtValorCompra.getText().trim().isEmpty()) {
 
 					JOptionPane.showMessageDialog(null, "Llenar todos los campos", "Error",
 							JOptionPane.WARNING_MESSAGE);
@@ -276,6 +251,55 @@ public class ProductoVista extends JFrame {
 		separator.setBounds(28, 322, 415, 2);
 		contentPane.add(separator);
 
+		txtCategoria = new JTextField();
+		txtCategoria.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+
+				if (txtCategoria.getText().trim().isEmpty()) {
+					lblAviso.setVisible(true);
+				} else {
+					lblAviso.setVisible(false);
+				}
+
+			}
+		});
+		txtCategoria.setColumns(10);
+		txtCategoria.setBounds(28, 152, 85, 19);
+		contentPane.add(txtCategoria);
+
+		btnBuscarCategoria = new JButton("Buscar");
+		btnBuscarCategoria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnBuscarCategoria.setBounds(122, 151, 85, 21);
+		contentPane.add(btnBuscarCategoria);
+
+		txtProveedor = new JTextField();
+		txtProveedor.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+
+				if (txtProveedor.getText().trim().isEmpty()) {
+					lblAviso.setVisible(true);
+				} else {
+					lblAviso.setVisible(false);
+				}
+			}
+		});
+		txtProveedor.setColumns(10);
+		txtProveedor.setBounds(28, 219, 85, 19);
+		contentPane.add(txtProveedor);
+
+		btnBuscarProveedor = new JButton("Buscar");
+		btnBuscarProveedor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnBuscarProveedor.setBounds(122, 218, 85, 21);
+		contentPane.add(btnBuscarProveedor);
+
 	}
 
 	public static boolean validarNumeros(String datos) {
@@ -288,6 +312,25 @@ public class ProductoVista extends JFrame {
 	 */
 
 	public void validarCampoNumerico() {
+
+		if (validarNumeros(txtProductoID.getText().trim())) {
+			lblAvisoNumeros.setVisible(false);
+		} else {
+			lblAvisoNumeros.setVisible(true);
+		}
+
+		if (validarNumeros(txtCategoria.getText().trim())) {
+			lblAvisoNumeros.setVisible(false);
+		} else {
+			lblAvisoNumeros.setVisible(true);
+		}
+
+		if (validarNumeros(txtProveedor.getText().trim())) {
+			lblAvisoNumeros.setVisible(false);
+		} else {
+			lblAvisoNumeros.setVisible(true);
+		}
+
 		if (validarNumeros(txtCantidad.getText().trim())) {
 			lblAvisoNumeros.setVisible(false);
 		} else {
@@ -307,7 +350,6 @@ public class ProductoVista extends JFrame {
 		}
 
 	}
-
 }
 
 /*
