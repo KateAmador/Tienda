@@ -57,7 +57,7 @@ public class FacturaVista extends JFrame {
 	public FacturaVista() {
 		setBackground(Color.WHITE);
 		setTitle("Factura\r\n");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 388, 531);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(147, 202, 241));
