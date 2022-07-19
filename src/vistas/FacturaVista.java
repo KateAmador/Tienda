@@ -31,7 +31,7 @@ public class FacturaVista extends JFrame {
 	public JButton btnGuardar;
 	public JButton btnBuscar;
 	public JButton Borrar;
-	
+	public JButton Actualizar;
 	
 	
 	
@@ -57,34 +57,28 @@ public class FacturaVista extends JFrame {
 	public FacturaVista() {
 		setBackground(Color.WHITE);
 		setTitle("Factura\r\n");
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 388, 531);
+
+		
+
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(147, 202, 241));
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(16, 64, 136));
-		panel.setBounds(0, 0, 379, 76);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Factura");
-		lblNewLabel.setForeground(new Color(255, 255, 240));
-		lblNewLabel.setBounds(10, 11, 220, 60);
-		lblNewLabel.setFont(new Font("Trebuchet MS", Font.PLAIN, 44));
-		panel.add(lblNewLabel);
-		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.WHITE);
-		panel_2.setBounds(0, 80, 379, 427);
+		panel_2.setBounds(59, 81, 416, 427);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
 		Borrar = new JButton("Borrar");
-		Borrar.setBounds(252, 342, 89, 23);
+		Borrar.setBackground(Color.WHITE);
+		Borrar.setBorder(null);
+		Borrar.setBounds(307, 342, 89, 23);
 		panel_2.add(Borrar);
 		
 		FacturaID = new JTextField();
@@ -169,18 +163,33 @@ public class FacturaVista extends JFrame {
 		panel_2.add(separator_4);
 		
 		btnGuardar = new JButton("Guardar");
+		btnGuardar.setBackground(Color.WHITE);
 		btnGuardar.setBorder(null);
-		btnGuardar.setBounds(30, 342, 89, 23);
+		btnGuardar.setBounds(10, 342, 89, 23);
 		panel_2.add(btnGuardar);
 		
 		btnBuscar = new JButton("Buscar");
+		btnBuscar.setBackground(Color.WHITE);
 		btnBuscar.setBorder(null);
-		btnBuscar.setBounds(148, 342, 89, 23);
+		btnBuscar.setBounds(208, 342, 89, 23);
 		panel_2.add(btnBuscar);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Diego\\Downloads\\Vista\\Tienda\\estilos para jpane sup\\recorte1.PNG"));
-		lblNewLabel_1.setBounds(0, 100, 698, 327);
-		panel_2.add(lblNewLabel_1);
+		Actualizar = new JButton("Actualizar");
+		Actualizar.setBackground(Color.WHITE);
+		Actualizar.setBorder(null);
+		Actualizar.setBounds(109, 342, 89, 23);
+		panel_2.add(Actualizar);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 524, 81);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Factura");
+		lblNewLabel.setBounds(10, 11, 149, 52);
+		panel.add(lblNewLabel);
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setFont(new Font("Trebuchet MS", Font.PLAIN, 44));
 	}	
 }
