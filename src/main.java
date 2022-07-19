@@ -22,9 +22,9 @@ public class main {
 		
 		ControladorProveedor ctrl = new ControladorProveedor(pro, cp, frm);
 		ctrFactura ctr = new ctrFactura(mod, modC, ft);
-		ctr.iniciar();
+		//ctr.iniciar();
 		ctrl.iniciar();
-		frm.setVisible(true);
+		//frm.setVisible(true);
 		ft.setVisible(true);
 		
 	}

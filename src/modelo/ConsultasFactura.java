@@ -109,5 +109,36 @@ public class ConsultasFactura extends Conexion {
 			}
 		}
 	}
+	public boolean Actualizar(Factura ft) {
+		Conexion con = new Conexion();
+		Connection n = con.conectar();
+		PreparedStatement ps = null;
+		
+		String sql = "UPDATE Factura SET  factura_id=?, FK_Cliente=?, cantidad=?, total=?, fecha=? WHERE factura_id = ?";
+		
+		try {
+			ps = n.prepareStatement(sql);
+			ps.setInt(1, ft.getFactura_id());
+			ps.setInt(2, ft.getCliente_fk());
+			ps.setString(3, ft.getCantidad());
+			ps.setString(4, ft.getTotal());
+			ps.setString(5, ft.getFecha());
+			ps.setInt(6, ft.getFactura_id());
+			ps.execute();
+			return true;
+		} catch (Exception e) {
+			System.out.println("Error en la exception " + e);
+			return false;
+		} finally {
+			try {
+				n.close();
+			} catch (Exception e2) {
+				System.out.println("Error no se pudo cerrar" + e2);
+			}
+		}
+		
+		
+		
+	}
 
 }

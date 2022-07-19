@@ -25,6 +25,7 @@ public class ctrFactura implements ActionListener {
 		this.frm.btnGuardar.addActionListener(this);
 		this.frm.btnBuscar.addActionListener(this);
 		this.frm.Borrar.addActionListener(this);
+		this.frm.Actualizar.addActionListener(this);
 	
 
 	}
@@ -70,6 +71,7 @@ public class ctrFactura implements ActionListener {
 				
 			} else {
 				JOptionPane.showMessageDialog(null, "Error no se Encontro el registro");
+				limpiar();
 
 			}
 		}
@@ -85,6 +87,22 @@ public class ctrFactura implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Error no se pudo Borrar registros");
 
 			}
+		}
+		
+		if(e.getSource() == frm.Actualizar) {
+			mod.setFactura_id(Integer.parseInt(frm.FacturaID.getText()));
+			mod.setCliente_fk(Integer.parseInt(frm.ClienteID.getText()));
+			mod.setCantidad(frm.cantidad.getText());
+			mod.setTotal(frm.total.getText());
+			mod.setFecha(frm.fecha.getText());
+			if(modC.Actualizar(mod)) {
+				JOptionPane.showMessageDialog(null, "Registro actualizado");
+				limpiar();
+			}else {
+				JOptionPane.showMessageDialog(null, "No se puede actualizar tu registro");
+				limpiar();
+			}
+			
 		}
 			
 	}
