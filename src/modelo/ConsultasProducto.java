@@ -139,4 +139,39 @@ public class ConsultasProducto extends Conexion {
 		}
 	}
 
+	public boolean buscarProveedor(Proveedor proveedor) {
+		PreparedStatement stm = null;
+		ResultSet rs = null;
+		Connection cn = conectar();
+
+		String sql = "SELECT id_proveedor FROM proveedores WHERE id_proveedor = ?";
+
+		try {
+			stm = cn.prepareStatement(sql);
+			stm.setInt(1, proveedor.getProveedorId());
+			rs = stm.executeQuery();
+
+			if (rs.next()) {
+
+				proveedor.setProveedorId(rs.getInt("id_proveedor"));
+
+				return true;
+			}
+
+			return false;
+
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Error" + e);
+			return false;
+		} finally {
+			try {
+				cn.close();
+				stm.close();
+				rs.close();
+			} catch (Exception e) {
+				System.err.println(e);
+			}
+		}
+	}
+
 }
