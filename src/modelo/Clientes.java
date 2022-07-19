@@ -1,4 +1,4 @@
-package vistas;
+package modelo;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
