@@ -11,7 +11,7 @@ import controlador.ControladorProducto;
 import controlador.ControladorProductoProveedor;
 import controlador.ControladorProveedor;
 import controlador.ctrFactura;
-import modelo.ConsultaClientes;
+//import modelo.ConsultaClientes;
 import modelo.ConsultasFactura;
 import modelo.ConsultasProducto;
 import modelo.ConsultasProveedor;
