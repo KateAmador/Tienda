@@ -39,35 +39,43 @@ public class ControladorProducto implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == frm.btnAgregar) {
-			modelo.setProductoId(Integer.parseInt(frm.txtProductoID.getText()));
-			modelo.setCantidad(Integer.parseInt(frm.txtCantidad.getText()));
-			modelo.setMarca(frm.txtMarca.getText());
-			modelo.setValorVenta(Integer.parseInt(frm.txtValorVenta.getText()));
-			modelo.setValorCompra(Integer.parseInt(frm.txtValorCompra.getText()));
 
-			if (modeloP.registrar(modelo)) {
-				JOptionPane.showMessageDialog(null, "Ingresado correctamente");
-				limpiar();
+			if (validarCamposVacios(true)) {
+				mensajeCamposVacios();
 			} else {
-				JOptionPane.showMessageDialog(null, "Error al guardar");
-				limpiar();
+				modelo.setProductoId(Integer.parseInt(frm.txtProductoID.getText()));
+				modelo.setCantidad(Integer.parseInt(frm.txtCantidad.getText()));
+				modelo.setMarca(frm.txtMarca.getText());
+				modelo.setValorVenta(Integer.parseInt(frm.txtValorVenta.getText()));
+				modelo.setValorCompra(Integer.parseInt(frm.txtValorCompra.getText()));
+
+				if (modeloP.registrar(modelo)) {
+					JOptionPane.showMessageDialog(null, "Ingresado correctamente");
+					limpiar();
+				} else {
+					JOptionPane.showMessageDialog(null, "Error al guardar");
+				}
 			}
 		}
 
 		if (e.getSource() == frm.btnModificar) {
-			modelo.setProductoId(Integer.parseInt(frm.txtProductoID.getText()));
-			modelo.setCantidad(Integer.parseInt(frm.txtCantidad.getText()));
-			modelo.setMarca(frm.txtMarca.getText());
-			modelo.setValorVenta(Integer.parseInt(frm.txtValorVenta.getText()));
-			modelo.setValorCompra(Integer.parseInt(frm.txtValorCompra.getText()));
-			// modelo.setCustomerID(frm.txt_customerID.getText());
 
-			if (modeloP.modificar(modelo)) {
-				JOptionPane.showMessageDialog(null, "Se modifico correctamente");
-				limpiar();
+			if (validarCamposVacios(true)) {
+				mensajeCamposVacios();
 			} else {
-				JOptionPane.showMessageDialog(null, "Error al modificar");
-				limpiar();
+				modelo.setProductoId(Integer.parseInt(frm.txtProductoID.getText()));
+				modelo.setCantidad(Integer.parseInt(frm.txtCantidad.getText()));
+				modelo.setMarca(frm.txtMarca.getText());
+				modelo.setValorVenta(Integer.parseInt(frm.txtValorVenta.getText()));
+				modelo.setValorCompra(Integer.parseInt(frm.txtValorCompra.getText()));
+
+				if (modeloP.modificar(modelo)) {
+
+					JOptionPane.showMessageDialog(null, "Se modifico correctamente");
+					limpiar();
+				} else {
+					JOptionPane.showMessageDialog(null, "Error al modificar");
+				}
 			}
 		}
 
@@ -79,7 +87,6 @@ public class ControladorProducto implements ActionListener {
 				limpiar();
 			} else {
 				JOptionPane.showMessageDialog(null, "Error al eliminar");
-				limpiar();
 			}
 		}
 
@@ -96,8 +103,12 @@ public class ControladorProducto implements ActionListener {
 
 			} else {
 				JOptionPane.showMessageDialog(null, "No se encontro el registro");
-				limpiar();
 			}
+		}
+
+		if (e.getSource() == frm.btnLimpiar) {
+			limpiar();
+
 		}
 	}
 
@@ -108,6 +119,23 @@ public class ControladorProducto implements ActionListener {
 		frm.txtMarca.setText(null);
 		frm.txtValorVenta.setText(null);
 		frm.txtValorCompra.setText(null);
+		frm.txtCategoria.setText(null);
+		frm.txtProveedor.setText(null);
+	}
+
+	public boolean validarCamposVacios(boolean dato) {
+		if (frm.txtProductoID.getText().trim().isEmpty() || frm.txtCategoria.getText().trim().isEmpty()
+				|| frm.txtProveedor.getText().trim().isEmpty() || frm.txtCantidad.getText().trim().isEmpty()
+				|| frm.txtValorVenta.getText().trim().isEmpty() || frm.txtValorCompra.getText().trim().isEmpty()
+				|| frm.txtMarca.getText().trim().isEmpty()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void mensajeCamposVacios() {
+		JOptionPane.showMessageDialog(null, "LLenar los campos", "Error", JOptionPane.WARNING_MESSAGE);
 	}
 
 }

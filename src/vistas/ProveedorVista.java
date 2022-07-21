@@ -18,6 +18,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ProveedorVista extends JFrame {
 
@@ -32,6 +34,11 @@ public class ProveedorVista extends JFrame {
 	public JButton btnModificar;
 	public JButton btnEliminar;
 	public JButton btnLimpiar;
+	public JLabel lblAvisoNumeros;
+	public JLabel lblAvisoNumeros2;
+	public JLabel lblAvisoNumeros3;
+	public JLabel lblAvisoNumeros4;
+	public JLabel lblAvisoNumeros5;
 
 	/**
 	 * Launch the application.
@@ -77,6 +84,21 @@ public class ProveedorVista extends JFrame {
 		contentPane.add(lblProveedorID);
 
 		txtProveedorId = new JTextField();
+		txtProveedorId.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+
+				char validar = e.getKeyChar();
+
+				if (Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					lblAvisoNumeros4.setVisible(true);
+				} else {
+					lblAvisoNumeros4.setVisible(false);
+				}
+			}
+		});
 		txtProveedorId.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -96,6 +118,21 @@ public class ProveedorVista extends JFrame {
 		contentPane.add(lblEmpresa);
 
 		txtEmpresa = new JTextField();
+		txtEmpresa.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+
+				char validar = e.getKeyChar();
+
+				if (Character.isDigit(validar)) {
+					getToolkit().beep();
+					e.consume();
+					lblAvisoNumeros.setVisible(true);
+				} else {
+					lblAvisoNumeros.setVisible(false);
+				}
+			}
+		});
 		txtEmpresa.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -115,6 +152,20 @@ public class ProveedorVista extends JFrame {
 		contentPane.add(lblNombre);
 
 		txtNombre = new JTextField();
+		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+
+				if (Character.isDigit(validar)) {
+					getToolkit().beep();
+					e.consume();
+					lblAvisoNumeros3.setVisible(true);
+				} else {
+					lblAvisoNumeros3.setVisible(false);
+				}
+			}
+		});
 		txtNombre.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -134,6 +185,20 @@ public class ProveedorVista extends JFrame {
 		contentPane.add(lblApellido);
 
 		txtApellido = new JTextField();
+		txtApellido.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+
+				if (Character.isDigit(validar)) {
+					getToolkit().beep();
+					e.consume();
+					lblAvisoNumeros2.setVisible(true);
+				} else {
+					lblAvisoNumeros2.setVisible(false);
+				}
+			}
+		});
 		txtApellido.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -153,6 +218,20 @@ public class ProveedorVista extends JFrame {
 		contentPane.add(lblTelefono);
 
 		txtTelefono = new JTextField();
+		txtTelefono.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+
+				if (Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					lblAvisoNumeros5.setVisible(true);
+				} else {
+					lblAvisoNumeros5.setVisible(false);
+				}
+			}
+		});
 		txtTelefono.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -172,12 +251,6 @@ public class ProveedorVista extends JFrame {
 		contentPane.add(separator);
 
 		btnAgregar = new JButton("Agregar");
-		btnAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				validarCamposVacios();
-
-			}
-		});
 		btnAgregar.setBounds(20, 236, 85, 21);
 		contentPane.add(btnAgregar);
 
@@ -196,14 +269,40 @@ public class ProveedorVista extends JFrame {
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(112, 83, 85, 21);
 		contentPane.add(btnBuscar);
-	}
 
-	public void validarCamposVacios() {
-		if (txtProveedorId.getText().trim().isEmpty() || txtEmpresa.getText().trim().isEmpty()
-				|| txtNombre.getText().trim().isEmpty() || txtApellido.getText().trim().isEmpty()
-				|| txtTelefono.getText().trim().isEmpty()) {
+		lblAvisoNumeros = new JLabel("Solo letras");
+		lblAvisoNumeros.setForeground(Color.RED);
+		lblAvisoNumeros.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		lblAvisoNumeros.setBounds(157, 123, 59, 13);
+		contentPane.add(lblAvisoNumeros);
+		lblAvisoNumeros.setVisible(false);
 
-			JOptionPane.showMessageDialog(null, "Llenar todos los campos", "Error", JOptionPane.WARNING_MESSAGE);
-		}
+		lblAvisoNumeros2 = new JLabel("Solo letras");
+		lblAvisoNumeros2.setForeground(Color.RED);
+		lblAvisoNumeros2.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		lblAvisoNumeros2.setBounds(157, 171, 59, 13);
+		contentPane.add(lblAvisoNumeros2);
+		lblAvisoNumeros2.setVisible(false);
+
+		lblAvisoNumeros3 = new JLabel("Solo letras");
+		lblAvisoNumeros3.setForeground(Color.RED);
+		lblAvisoNumeros3.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		lblAvisoNumeros3.setBounds(409, 123, 59, 13);
+		contentPane.add(lblAvisoNumeros3);
+		lblAvisoNumeros3.setVisible(false);
+
+		lblAvisoNumeros4 = new JLabel("Solo numeros");
+		lblAvisoNumeros4.setForeground(Color.RED);
+		lblAvisoNumeros4.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		lblAvisoNumeros4.setBounds(20, 61, 59, 13);
+		contentPane.add(lblAvisoNumeros4);
+		lblAvisoNumeros4.setVisible(false);
+
+		lblAvisoNumeros5 = new JLabel("Solo numeros");
+		lblAvisoNumeros5.setForeground(Color.RED);
+		lblAvisoNumeros5.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		lblAvisoNumeros5.setBounds(393, 171, 59, 13);
+		contentPane.add(lblAvisoNumeros5);
+		lblAvisoNumeros5.setVisible(false);
 	}
 }
