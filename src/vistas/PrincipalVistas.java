@@ -30,7 +30,7 @@ public class PrincipalVistas extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
+	 * hola
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
