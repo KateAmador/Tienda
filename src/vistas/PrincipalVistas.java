@@ -49,6 +49,8 @@ public class PrincipalVistas extends JFrame {
 	 * Create the frame.
 	 */
 	public PrincipalVistas() {
+
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 608, 314);
 		contentPane = new JPanel();
