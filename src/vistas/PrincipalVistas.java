@@ -165,7 +165,7 @@ public class PrincipalVistas extends JFrame {
 
 				// Entrada entrada = new Entrada();
 				// ConsultasEntrada ce = new ConsultasEntrada();
-				InterfazTienda frm = new InterfazTienda();
+				vistaEntrada frm = new vistaEntrada();
 
 				// ControladorEntrada ctrl = new ControladorEntrada(entrada, ce, frm);
 				// ctrl.iniciar();
