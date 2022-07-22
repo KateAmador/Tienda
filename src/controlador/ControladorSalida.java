@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import Modelo.ConsultaSalida;
-import Modelo.SalidaObjeto;
-import Vista.SalidaVista;
+import modelo.ConsultaSalida;
+import modelo.SalidaObjeto;
+import vistas.SalidaVista;
 
 public class ControladorSalida implements ActionListener {
 
