@@ -69,7 +69,7 @@ public class PrincipalVistas extends JFrame {
 
 				// Cliente cliente = new Cliente();
 				// ConsultaClientes cl = new ConsultaClientes();
-				Clientes frm = new Clientes();
+				ClienteVista frm = new ClienteVista ();
 
 				// ControladorCliente ctrl = new ControladorCliente(cliente, cl, frm);
 				// ctrl.iniciar();
@@ -150,7 +150,7 @@ public class PrincipalVistas extends JFrame {
 
 				// Salida salida = new Salida();
 				// ConsultaSalida cs = new ConsultaSalida();
-				Salida frm = new Salida();
+				SalidaVista frm = new SalidaVista();
 
 				// ControladorSalida ctrl = new ControladorSalida(salida, cs, frm);
 				// ctrl.iniciar();

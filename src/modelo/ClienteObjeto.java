@@ -1,6 +1,6 @@
 package modelo;
 
-public class ClientesObjeto {
+public class ClienteObjeto {
 	int Id_Cliente;
 	String Nombre, Apellido, Documento, Telefono;
 	public int getId_Cliente() {
