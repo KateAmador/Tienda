@@ -5,10 +5,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import Modelo.ClientesObjeto;
-import Modelo.ConsultaClientes;
-import Modelo.ConsultaSalida;
-import Vista.ClientesVista;
+import modelo.ClientesObjeto;
+import modelo.ConsultaClientes;
+import modelo.ConsultaSalida;
+import vistas.ClientesVista;
 
 public class ControladorClientes implements ActionListener {
 
