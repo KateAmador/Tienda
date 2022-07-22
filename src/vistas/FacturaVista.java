@@ -67,7 +67,7 @@ public class FacturaVista extends JFrame {
 
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 537, 480);
+		setBounds(100, 100, 490, 480);
 
 		
 
@@ -85,7 +85,7 @@ public class FacturaVista extends JFrame {
 		
 		Borrar = new JButton("Borrar");
 		Borrar.setBackground(Color.WHITE);
-		Borrar.setBounds(358, 399, 89, 23);
+		Borrar.setBounds(358, 396, 89, 23);
 		panel_2.add(Borrar);
 		
 		JLabel Factura_ID = new JLabel("Factura_ID");
@@ -115,17 +115,17 @@ public class FacturaVista extends JFrame {
 		
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setBackground(Color.WHITE);
-		btnGuardar.setBounds(61, 399, 89, 23);
+		btnGuardar.setBounds(61, 396, 89, 23);
 		panel_2.add(btnGuardar);
 		
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setBackground(Color.WHITE);
-		btnBuscar.setBounds(259, 399, 89, 23);
+		btnBuscar.setBounds(259, 396, 89, 23);
 		panel_2.add(btnBuscar);
 		
 		Actualizar = new JButton("Actualizar");
 		Actualizar.setBackground(Color.WHITE);
-		Actualizar.setBounds(160, 399, 89, 23);
+		Actualizar.setBounds(160, 396, 89, 23);
 		panel_2.add(Actualizar);
 		
 		FacturaID = new JTextField();
