@@ -34,7 +34,7 @@ public class ctrFactura implements ActionListener {
 		frm.setTitle("Factura");
 		frm.setLocationRelativeTo(null);
 		frm.FacturaID.setVisible(true);
-		//frm.ClienteID.setVisible(true);
+		
 	}
 
 	@Override
