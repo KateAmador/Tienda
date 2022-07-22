@@ -18,6 +18,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ProductoVista extends JFrame {
 
@@ -39,6 +41,10 @@ public class ProductoVista extends JFrame {
 	public JButton btnBuscarProveedor;
 	public JTextField txtCategoria;
 	public JTextField txtProveedor;
+	public JLabel lblAvisoNumeros4;
+	public JLabel lblAvisoNumeros5;
+	public JLabel lblAvisoNumeros6;
+	public JLabel lblAviso;
 
 	/**
 	 * Launch the application.
@@ -67,11 +73,10 @@ public class ProductoVista extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblAviso = new JLabel("(*) Campos Obligatorios");
+		lblAviso = new JLabel("(*) Campos Obligatorios");
 		lblAviso.setForeground(Color.RED);
-		lblAviso.setBounds(28, 58, 179, 13);
+		lblAviso.setBounds(266, 77, 179, 13);
 		contentPane.add(lblAviso);
-
 		lblAviso.setVisible(false);
 
 		lblAvisoNumeros2 = new JLabel("Solo numeros");
@@ -79,7 +84,6 @@ public class ProductoVista extends JFrame {
 		lblAvisoNumeros2.setForeground(Color.RED);
 		lblAvisoNumeros2.setBounds(160, 266, 96, 13);
 		contentPane.add(lblAvisoNumeros2);
-
 		lblAvisoNumeros2.setVisible(false);
 
 		lblAvisoNumeros3 = new JLabel("Solo numeros");
@@ -87,7 +91,6 @@ public class ProductoVista extends JFrame {
 		lblAvisoNumeros3.setForeground(Color.RED);
 		lblAvisoNumeros3.setBounds(397, 266, 114, 13);
 		contentPane.add(lblAvisoNumeros3);
-
 		lblAvisoNumeros3.setVisible(false);
 
 		lblAvisoNumeros = new JLabel("Solo numeros");
@@ -95,7 +98,6 @@ public class ProductoVista extends JFrame {
 		lblAvisoNumeros.setForeground(Color.RED);
 		lblAvisoNumeros.setBounds(398, 136, 126, 13);
 		contentPane.add(lblAvisoNumeros);
-
 		lblAvisoNumeros.setVisible(false);
 
 		JLabel lblProductoId = new JLabel("Producto ID (*)");
@@ -103,9 +105,24 @@ public class ProductoVista extends JFrame {
 		contentPane.add(lblProductoId);
 
 		txtProductoID = new JTextField();
+		txtProductoID.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+
+				if (Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					lblAvisoNumeros6.setVisible(true);
+				} else {
+					lblAvisoNumeros6.setVisible(false);
+				}
+			}
+		});
 		txtProductoID.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
+
 				if (txtProductoID.getText().trim().isEmpty()) {
 					lblAviso.setVisible(true);
 				} else {
@@ -122,6 +139,20 @@ public class ProductoVista extends JFrame {
 		contentPane.add(lblCantidad);
 
 		txtCantidad = new JTextField();
+		txtCantidad.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+
+				if (Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					lblAvisoNumeros.setVisible(true);
+				} else {
+					lblAvisoNumeros.setVisible(false);
+				}
+			}
+		});
 		txtCantidad.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -160,6 +191,20 @@ public class ProductoVista extends JFrame {
 		contentPane.add(lblValorVenta);
 
 		txtValorVenta = new JTextField();
+		txtValorVenta.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+
+				if (Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					lblAvisoNumeros2.setVisible(true);
+				} else {
+					lblAvisoNumeros2.setVisible(false);
+				}
+			}
+		});
 		txtValorVenta.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -184,6 +229,20 @@ public class ProductoVista extends JFrame {
 		contentPane.add(lblProductoPro);
 
 		txtValorCompra = new JTextField();
+		txtValorCompra.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+
+				if (Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					lblAvisoNumeros3.setVisible(true);
+				} else {
+					lblAvisoNumeros3.setVisible(false);
+				}
+			}
+		});
 		txtValorCompra.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -208,26 +267,6 @@ public class ProductoVista extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		btnAgregar = new JButton("Agregar");
-		btnAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				validarCampoNumerico();
-
-				if (txtProductoID.getText().trim().isEmpty() || txtCategoria.getText().trim().isEmpty()
-						|| txtProveedor.getText().trim().isEmpty() || txtCantidad.getText().trim().isEmpty()
-						|| txtMarca.getText().trim().isEmpty() || txtValorVenta.getText().trim().isEmpty()
-						|| txtValorCompra.getText().trim().isEmpty()) {
-
-					JOptionPane.showMessageDialog(null, "Llenar todos los campos", "Error",
-							JOptionPane.WARNING_MESSAGE);
-
-					lblAviso.setVisible(true);
-				} else {
-					lblAviso.setVisible(false);
-				}
-			}
-
-		});
 		btnAgregar.setBounds(28, 341, 85, 21);
 		contentPane.add(btnAgregar);
 
@@ -252,35 +291,57 @@ public class ProductoVista extends JFrame {
 		contentPane.add(separator);
 
 		txtCategoria = new JTextField();
+		txtCategoria.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+
+				if (Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					lblAvisoNumeros5.setVisible(true);
+				} else {
+					lblAvisoNumeros5.setVisible(false);
+				}
+			}
+		});
 		txtCategoria.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
-
 				if (txtCategoria.getText().trim().isEmpty()) {
 					lblAviso.setVisible(true);
 				} else {
 					lblAviso.setVisible(false);
 				}
-
 			}
 		});
+
 		txtCategoria.setColumns(10);
 		txtCategoria.setBounds(28, 152, 85, 19);
 		contentPane.add(txtCategoria);
 
 		btnBuscarCategoria = new JButton("Buscar");
-		btnBuscarCategoria.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnBuscarCategoria.setBounds(122, 151, 85, 21);
 		contentPane.add(btnBuscarCategoria);
 
 		txtProveedor = new JTextField();
+		txtProveedor.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char validar = e.getKeyChar();
+
+				if (Character.isLetter(validar)) {
+					getToolkit().beep();
+					e.consume();
+					lblAvisoNumeros4.setVisible(true);
+				} else {
+					lblAvisoNumeros4.setVisible(false);
+				}
+			}
+		});
 		txtProveedor.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
-
 				if (txtProveedor.getText().trim().isEmpty()) {
 					lblAviso.setVisible(true);
 				} else {
@@ -293,72 +354,28 @@ public class ProductoVista extends JFrame {
 		contentPane.add(txtProveedor);
 
 		btnBuscarProveedor = new JButton("Buscar");
-		btnBuscarProveedor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnBuscarProveedor.setBounds(122, 218, 85, 21);
 		contentPane.add(btnBuscarProveedor);
 
-	}
+		lblAvisoNumeros4 = new JLabel("Solo numeros");
+		lblAvisoNumeros4.setForeground(Color.RED);
+		lblAvisoNumeros4.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		lblAvisoNumeros4.setBounds(28, 181, 110, 19);
+		contentPane.add(lblAvisoNumeros4);
+		lblAvisoNumeros4.setVisible(false);
 
-	public static boolean validarNumeros(String datos) {
-		return datos.matches("[0-9]*");
-	}
+		lblAvisoNumeros5 = new JLabel("Solo numeros");
+		lblAvisoNumeros5.setForeground(Color.RED);
+		lblAvisoNumeros5.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		lblAvisoNumeros5.setBounds(28, 123, 110, 13);
+		contentPane.add(lblAvisoNumeros5);
+		lblAvisoNumeros5.setVisible(false);
 
-	/*
-	 * public static boolean validarCaracteres(String datos) { return
-	 * datos.matches("[a-zA-z]"); }
-	 */
-
-	public void validarCampoNumerico() {
-
-		if (validarNumeros(txtProductoID.getText().trim())) {
-			lblAvisoNumeros.setVisible(false);
-		} else {
-			lblAvisoNumeros.setVisible(true);
-		}
-
-		if (validarNumeros(txtCategoria.getText().trim())) {
-			lblAvisoNumeros.setVisible(false);
-		} else {
-			lblAvisoNumeros.setVisible(true);
-		}
-
-		if (validarNumeros(txtProveedor.getText().trim())) {
-			lblAvisoNumeros.setVisible(false);
-		} else {
-			lblAvisoNumeros.setVisible(true);
-		}
-
-		if (validarNumeros(txtCantidad.getText().trim())) {
-			lblAvisoNumeros.setVisible(false);
-		} else {
-			lblAvisoNumeros.setVisible(true);
-		}
-
-		if (validarNumeros(txtValorVenta.getText().trim())) {
-			lblAvisoNumeros2.setVisible(false);
-		} else {
-			lblAvisoNumeros2.setVisible(true);
-		}
-
-		if (validarNumeros(txtValorCompra.getText().trim())) {
-			lblAvisoNumeros3.setVisible(false);
-		} else {
-			lblAvisoNumeros3.setVisible(true);
-		}
-
+		lblAvisoNumeros6 = new JLabel("Solo numeros");
+		lblAvisoNumeros6.setForeground(Color.RED);
+		lblAvisoNumeros6.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		lblAvisoNumeros6.setBounds(28, 59, 110, 19);
+		contentPane.add(lblAvisoNumeros6);
+		lblAvisoNumeros6.setVisible(false);
 	}
 }
-
-/*
- * public void ValidarCampoCaracteres() { if
- * (validarNumeros(txtCantidad.getText().trim()) ||
- * validarNumeros(txtValorVenta.getText().trim()) ||
- * validarNumeros(txtValorCompra.getText().trim())) {
- * lblAvisoNumeros.setVisible(false); lblAvisoNumeros2.setVisible(false);
- * lblAvisoNumeros3.setVisible(false); } else {
- * lblAvisoNumeros.setVisible(true); lblAvisoNumeros2.setVisible(true);
- * lblAvisoNumeros3.setVisible(true); } }
- */

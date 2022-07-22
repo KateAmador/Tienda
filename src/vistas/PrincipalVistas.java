@@ -11,7 +11,7 @@ import controlador.ControladorProducto;
 import controlador.ControladorProductoProveedor;
 import controlador.ControladorProveedor;
 import controlador.ctrFactura;
-import modelo.ConsultaClientes;
+//import modelo.ConsultaClientes;
 import modelo.ConsultasFactura;
 import modelo.ConsultasProducto;
 import modelo.ConsultasProveedor;
@@ -30,7 +30,7 @@ public class PrincipalVistas extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
+	 * hola
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -49,6 +49,8 @@ public class PrincipalVistas extends JFrame {
 	 * Create the frame.
 	 */
 	public PrincipalVistas() {
+
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 608, 314);
 		contentPane = new JPanel();
