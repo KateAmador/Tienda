@@ -25,7 +25,6 @@ public class ControladorProductoProveedor implements ActionListener {
 		this.frm.btnBuscarProveedor.addActionListener(this);
 	}
 
-
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == frm.btnBuscarProveedor) {
@@ -33,11 +32,10 @@ public class ControladorProductoProveedor implements ActionListener {
 
 			if (modeloP.buscarProveedor(modelo)) {
 
-				frm.txtProductoID.setText(String.valueOf(modelo.getProveedorId()));
+				frm.txtProveedor.setText(String.valueOf(modelo.getProveedorId()));
 
 			} else {
 				JOptionPane.showMessageDialog(null, "No se encontro el registro");
-				// limpiar();
 			}
 		}
 

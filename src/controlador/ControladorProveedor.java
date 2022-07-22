@@ -16,11 +16,11 @@ public class ControladorProveedor implements ActionListener {
 	private ProveedorVista frm;
 
 	public ControladorProveedor(Proveedor modelo, ConsultasProveedor modeloP, ProveedorVista vista) {
-		
+
 		this.modelo = modelo;
 		this.modeloP = modeloP;
 		this.frm = vista;
-		
+
 		this.frm.btnAgregar.addActionListener(this);
 		this.frm.btnModificar.addActionListener(this);
 		this.frm.btnEliminar.addActionListener(this);
@@ -39,35 +39,42 @@ public class ControladorProveedor implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == frm.btnAgregar) {
-			modelo.setProveedorId(Integer.parseInt(frm.txtProveedorId.getText()));
-			modelo.setEmpresa(frm.txtEmpresa.getText());
-			modelo.setNombre(frm.txtNombre.getText());
-			modelo.setApellido(frm.txtApellido.getText());
-			modelo.setTelefono(frm.txtTelefono.getText());
 
-			if (modeloP.registrar(modelo)) {
-				JOptionPane.showMessageDialog(null, "Ingresado correctamente");
-				limpiar();
+			if (validarCamposVacios(true)) {
+				mensajeCamposVacios();
 			} else {
-				JOptionPane.showMessageDialog(null, "Error al guardar");
-				limpiar();
+				modelo.setProveedorId(Integer.parseInt(frm.txtProveedorId.getText()));
+				modelo.setEmpresa(frm.txtEmpresa.getText());
+				modelo.setNombre(frm.txtNombre.getText());
+				modelo.setApellido(frm.txtApellido.getText());
+				modelo.setTelefono(frm.txtTelefono.getText());
+
+				if (modeloP.registrar(modelo)) {
+					JOptionPane.showMessageDialog(null, "Ingresado correctamente");
+					limpiar();
+				} else {
+					JOptionPane.showMessageDialog(null, "Error al guardar");
+				}
 			}
 		}
 
 		if (e.getSource() == frm.btnModificar) {
-			modelo.setProveedorId(Integer.parseInt(frm.txtProveedorId.getText()));
-			modelo.setEmpresa(frm.txtEmpresa.getText());
-			modelo.setNombre(frm.txtNombre.getText());
-			modelo.setApellido(frm.txtApellido.getText());
-			modelo.setTelefono(frm.txtTelefono.getText());
-			// modelo.setCustomerID(frm.txt_customerID.getText());
 
-			if (modeloP.modificar(modelo)) {
-				JOptionPane.showMessageDialog(null, "Se modifico correctamente");
-				limpiar();
+			if (validarCamposVacios(true)) {
+				mensajeCamposVacios();
 			} else {
-				JOptionPane.showMessageDialog(null, "Error al modificar");
-				limpiar();
+				modelo.setProveedorId(Integer.parseInt(frm.txtProveedorId.getText()));
+				modelo.setEmpresa(frm.txtEmpresa.getText());
+				modelo.setNombre(frm.txtNombre.getText());
+				modelo.setApellido(frm.txtApellido.getText());
+				modelo.setTelefono(frm.txtTelefono.getText());
+
+				if (modeloP.modificar(modelo)) {
+					JOptionPane.showMessageDialog(null, "Se modifico correctamente");
+					limpiar();
+				} else {
+					JOptionPane.showMessageDialog(null, "Error al modificar");
+				}
 			}
 		}
 
@@ -79,7 +86,6 @@ public class ControladorProveedor implements ActionListener {
 				limpiar();
 			} else {
 				JOptionPane.showMessageDialog(null, "Error al eliminar");
-				limpiar();
 			}
 		}
 
@@ -96,7 +102,6 @@ public class ControladorProveedor implements ActionListener {
 
 			} else {
 				JOptionPane.showMessageDialog(null, "No se encontro el registro");
-				limpiar();
 			}
 		}
 
@@ -112,6 +117,20 @@ public class ControladorProveedor implements ActionListener {
 		frm.txtNombre.setText(null);
 		frm.txtApellido.setText(null);
 		frm.txtTelefono.setText(null);
+	}
+
+	public boolean validarCamposVacios(boolean dato) {
+		if (frm.txtProveedorId.getText().trim().isEmpty() || frm.txtEmpresa.getText().trim().isEmpty()
+				|| frm.txtNombre.getText().trim().isEmpty() || frm.txtApellido.getText().trim().isEmpty()
+				|| frm.txtTelefono.getText().trim().isEmpty()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void mensajeCamposVacios() {
+		JOptionPane.showMessageDialog(null, "Llenar todos los campos", "Error", JOptionPane.WARNING_MESSAGE);
 	}
 
 }
