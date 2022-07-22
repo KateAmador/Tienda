@@ -88,7 +88,7 @@ public class ConsultaCliente extends Conexion {
 		Connection cn = conectar();
 
 		try {
-			PreparedStatement stm = cn.prepareStatement("DELETE FROM proveedores WHERE id_cliente = ?");
+			PreparedStatement stm = cn.prepareStatement("DELETE FROM clientes WHERE id_cliente = ?");
 
 			stm.setInt(1, cliente.getId_Cliente());
 			stm.executeUpdate();
