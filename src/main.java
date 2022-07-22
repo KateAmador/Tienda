@@ -12,21 +12,20 @@ public class main {
 
 	public static void main(String[] args) {
 
-		
 		Proveedor pro = new Proveedor();
 		Factura mod = new Factura();
 		ConsultasProveedor cp = new ConsultasProveedor();
 		ConsultasFactura modC = new ConsultasFactura();
 		ProveedorVista frm = new ProveedorVista();
 		FacturaVista ft = new FacturaVista();
-		
+
 		ControladorProveedor ctrl = new ControladorProveedor(pro, cp, frm);
 		ctrFactura ctr = new ctrFactura(mod, modC, ft);
-		//ctr.iniciar();
+		// ctr.iniciar();
 		ctrl.iniciar();
-		//frm.setVisible(true);
+		// frm.setVisible(true);
 		ft.setVisible(true);
-		
+
 	}
 
 }

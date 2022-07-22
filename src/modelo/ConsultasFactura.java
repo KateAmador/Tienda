@@ -58,7 +58,7 @@ public class ConsultasFactura extends Conexion {
 		try {
 			ps = n.prepareStatement(sql);
 			ps.setInt(1, ft.getFactura_id());
-			
+
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
@@ -109,13 +109,14 @@ public class ConsultasFactura extends Conexion {
 			}
 		}
 	}
+
 	public boolean Actualizar(Factura ft) {
 		Conexion con = new Conexion();
 		Connection n = con.conectar();
 		PreparedStatement ps = null;
-		
+
 		String sql = "UPDATE Factura SET  factura_id=?, FK_Cliente=?, cantidad=?, total=?, fecha=? WHERE factura_id = ?";
-		
+
 		try {
 			ps = n.prepareStatement(sql);
 			ps.setInt(1, ft.getFactura_id());
@@ -136,9 +137,7 @@ public class ConsultasFactura extends Conexion {
 				System.out.println("Error no se pudo cerrar" + e2);
 			}
 		}
-		
-		
-		
+
 	}
 
 }
