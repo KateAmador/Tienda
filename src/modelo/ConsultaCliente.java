@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 import util.Conexion;
 
-public class ConsultaClientes extends Conexion {
+public class ConsultaCliente extends Conexion {
 
 	Connection cn = null;
 	Statement stm = null;
@@ -17,11 +17,11 @@ public class ConsultaClientes extends Conexion {
 
 	Conexion conexion = new Conexion();
 
-	public ConsultaClientes() {
+	public ConsultaCliente() {
 
 	}
 
-	public boolean registrar(ClientesObjeto cliente) {
+	public boolean registrar(ClienteObjeto cliente) {
 		Connection cn = conectar();
 
 		try {
@@ -53,7 +53,7 @@ public class ConsultaClientes extends Conexion {
 
 	}
 
-	public boolean modificar(ClientesObjeto cliente) {
+	public boolean modificar(ClienteObjeto cliente) {
 		Connection cn = conectar();
 
 		try {
@@ -84,7 +84,7 @@ public class ConsultaClientes extends Conexion {
 		}
 	}
 
-	public boolean eliminar(ClientesObjeto cliente) {
+	public boolean eliminar(ClienteObjeto cliente) {
 		Connection cn = conectar();
 
 		try {
@@ -109,12 +109,12 @@ public class ConsultaClientes extends Conexion {
 		}
 	}
 
-	public boolean buscar(ClientesObjeto cliente) {
+	public boolean buscar(ClienteObjeto cliente) {
 		PreparedStatement stm = null;
 		ResultSet rs = null;
 		Connection cn = conectar();
 
-		String sql = "SELECT * FROM clientes WHERE id_proveedor = ?";
+		String sql = "SELECT * FROM clientes WHERE id_cliente = ?";
 
 		try {
 			stm = cn.prepareStatement(sql);

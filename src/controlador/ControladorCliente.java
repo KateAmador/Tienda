@@ -5,18 +5,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import modelo.ClientesObjeto;
-import modelo.ConsultaClientes;
+import modelo.ClienteObjeto;
+import modelo.ConsultaCliente;
 import modelo.ConsultaSalida;
-import vistas.ClientesVista;
+import vistas.ClienteVista;
 
-public class ControladorClientes implements ActionListener {
+public class ControladorCliente implements ActionListener {
 
-	private ClientesObjeto Modelo;
-	private ConsultaClientes ModeloC;
-	private ClientesVista frm;
+	private ClienteObjeto Modelo;
+	private ConsultaCliente ModeloC;
+	private ClienteVista frm;
 
-	public ControladorClientes(ClientesObjeto Modelo, ConsultaClientes ModeloC, ClientesVista frm) {
+	public ControladorCliente(ClienteObjeto Modelo, ConsultaCliente ModeloC, ClienteVista frm) {
 
 		this.Modelo = Modelo;
 		this.ModeloC = ModeloC;

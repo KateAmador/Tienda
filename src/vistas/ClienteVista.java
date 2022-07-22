@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class ClientesVista extends JFrame {
+public class ClienteVista extends JFrame {
 
 	public JPanel contentPane;
 	public JTextField txtID_Cliente;
@@ -38,7 +38,7 @@ public class ClientesVista extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ClientesVista frame = new ClientesVista();
+					ClienteVista frame = new ClienteVista();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +50,7 @@ public class ClientesVista extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ClientesVista() {
+	public ClienteVista() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 599, 419);
 		contentPane = new JPanel();
